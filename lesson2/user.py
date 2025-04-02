@@ -7,14 +7,51 @@
 - is_admin: свойство, которое возвращает, является ли пользователь администратором или нет
 - _is_admin: свойство-помощник, которое определяет, является ли пользователь администратором или нет
 - login(self, password): метод, который проверяет, соответствует ли введенный пароль паролю пользователя
-- logout(self): метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False при условии, что пользователь залогинен)
+- logout(self): метод, который выходит из аккаунта пользователя (устанавливает значение свойства _is_logged_in в False
+при условии, что пользователь залогинен)
 
 Для свойств name и password используйте декораторы @property и @password.setter.
 """
 
 
 class User:
-    pass
+
+    def __init__(self, name, password):
+        self._name = name
+        self._password = password
+        self._is_logged_in = False
+        self.is_admin = False
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, new_password):
+        self._password = new_password
+
+    @property
+    def _is_admin(self):
+        return self._is_admin
+
+    @_is_admin.setter
+    def _is_admin(self, choice):
+        self.is_admin = choice
+
+    def is_admin(self):
+        return self.is_admin is True
+
+    def login(self, password):
+        if self._password == password:
+            self._is_logged_in = True
+        print (self._password == password)
+
+    def logout(self):
+        self._is_logged_in = False
 
 
 # код для проверки 
