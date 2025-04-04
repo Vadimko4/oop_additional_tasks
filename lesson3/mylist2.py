@@ -9,7 +9,24 @@
 
 
 class MyList2:
-    pass
+
+    def __init__(self, data):
+        self.data = data
+        self.stop = len(data)
+
+    def __iter__(self):
+        self.cnt = -1
+        return self
+
+    def __next__(self):
+        self.cnt += 1
+        if self.cnt < self.stop:
+            return self.data[self.cnt]
+        else:
+            raise StopIteration
+
+    def __getitem__(self, index):
+        return self.data[index]
 
 
 # код для проверки 
