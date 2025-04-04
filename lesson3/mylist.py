@@ -11,7 +11,26 @@
 
 
 class MyList:
-    pass
+
+    def __init__(self, data):
+        self.data = data
+
+    def __repr__(self):
+        result_string = ''
+        for i in self.data:
+            result_string += str(i) + ', '
+        return f"{self.__class__.__name__}([{result_string[:-2]}])"
+
+    def __str__(self):
+        return f"[{', '.join(map(str, self.data))}]"
+
+    def __len__(self):
+        return len(self.data)
+
+    def __add__(self, other):
+        new_data = self.data[:]
+        new_data.extend(other.data)
+        return MyList(new_data)
 
 
 # код для проверки 
