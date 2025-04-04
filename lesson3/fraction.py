@@ -35,7 +35,7 @@ class Fraction:
         other_mult = other.denominator // common_mult
         lowest_common_denominator = common_mult * self_mult * other_mult
         result_numerator = self.numerator * other_mult + other.numerator * self_mult
-        return f"{result_numerator}/{lowest_common_denominator}"
+        return Fraction(result_numerator, lowest_common_denominator)
 
 
 # код для проверки 
