@@ -13,9 +13,25 @@
 - speak(self): метод, который выводит звук, издаваемый кошкой.
 """
 
+class Animal:
 
-class Aminal:
-    pass
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        pass
+
+
+class Dog(Animal):
+
+    def speak(self):
+        print("Woof!")
+
+
+class Cat(Animal):
+
+    def speak(self):
+        print("Meow!")
 
 
 # код для проверки 
