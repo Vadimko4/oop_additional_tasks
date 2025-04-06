@@ -10,11 +10,25 @@ class Employee:
     def __init__(self, pay):
         self.pay = pay
 
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.pay + other.pay
+        elif type(other) in (int, float):
+            return self.pay + other
+        else:
+            return self.pay
+
 
 class Client:
 
     def __init__(self, pay):
         self.pay = pay
+
+    def __add__(self, other):
+        if type(other) in (int, float):
+            return other
+        elif isinstance(other, Employee):
+            return other.pay
 
 
 class Developer(Employee):
