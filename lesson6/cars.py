@@ -1,3 +1,5 @@
+import datetime
+
 """
 Напишите класс Car, представляющий машину, имеющий следующие свойства:
 
@@ -10,11 +12,18 @@
 
 
 class Car:
-    pass
+
+    def __init__(self, name, model, year):
+        self.name = name
+        self.model = model
+        if year <= datetime.datetime.now().year:
+            self.year = year
+        else:
+            raise ValueError('Год выпуска не может быть больше текущего')
 
 
 # код для проверки
 car = Car('Toyota', 'Corolla', 2022)
 
-car = Car('Toyota', 'Corolla', 3000)
+car1 = Car('Toyota', 'Corolla', 3000)
 # raises Exception('Эта машина еще не была выпущена')
